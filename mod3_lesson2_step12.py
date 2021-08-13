@@ -1,38 +1,31 @@
 from selenium import webdriver
 import time 
+import unittest
 
-link = "http://suninjuly.github.io/registration2.html"
+# self.assertEqual('что должно быть', 'что есть', 'что произошло');
+ 
+class TestLogin(unittest.TestCase):
+    def input(self):
+        self.browser = webdriver.Chrome()
+        self.browser.get("http://suninjuly.github.io/registration1.html")
 
-try:
-    browser = webdriver.Chrome()
-    browser.get(link)
 
-    input1 = browser.find_element_by_xpath("//div/input[@placeholder='Input your first name']")
-    input1.send_keys("Ivan")
-    input2 = browser.find_element_by_xpath("//div/input[@placeholder='Input your last name']")
-    input2.send_keys("Petrov")
-    input3 = browser.find_element_by_xpath("//div/input[@placeholder='Input your email']")
-    input3.send_keys("email@mail.com")
+        self.browser.find_element_by_class_name(("form-control.first").send_keys("Ivan"))
+        self.browser.find_element_by_class_name(("form-control.second").send_keys("Petrov"))
+        self.browser.find_element_by_class_name(("form-control.third").send_keys("email@mail.com"))
 
-    # Отправляем заполненную форму
-    button = browser.find_element_by_css_selector("button.btn")
-    button.click()
+        self.browser.find_element_by_css_selector("button.btn").click()
 
     # Проверяем, что смогли зарегистрироваться
     # ждем загрузки страницы
-    time.sleep(1)
+        self.time.sleep(1)
 
     # находим элемент, содержащий текст
-    welcome_text_elt = browser.find_element_by_tag_name("h1")
+        self.welcome_text_elt = browser.find_element_by_tag_name("h1")
     # записываем в переменную welcome_text текст из элемента welcome_text_elt
-    welcome_text = welcome_text_elt.text
+        self.welcome_text = welcome_text_elt.text
 
-    # с помощью assert проверяем, что ожидаемый текст совпадает с текстом на странице сайта
-    assert "Congratulations! You have successfully registered!" == welcome_text
-
-finally:
-    # ожидание чтобы визуально оценить результаты прохождения скрипта
-    time.sleep(10)
-    # закрываем браузер после всех манипуляций
-    browser.quit()
-
+        self.assertEqual (welcome_text, "Congratulations! You have successfully registered!")
+    
+if __name__ == "__main__":
+    unittest.main() 
