@@ -10,9 +10,9 @@ class TestLogin(unittest.TestCase):
     def test_first_link(self):
         chrome.get("http://suninjuly.github.io/registration1.html")
 
-        chrome.find_element_by_class_name("first").send_keys("Ivan")
-        chrome.find_element_by_class_name("second").send_keys("Petrov")
-        chrome.find_element_by_class_name("third").send_keys("email@mail.com")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your first name']").send_keys("Ivan")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your last name']").send_keys("Petrov")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your email']").send_keys("email@mail.com")
 
         chrome.find_element_by_css_selector("button.btn").click()
 
@@ -30,9 +30,9 @@ class TestLogin(unittest.TestCase):
     def test_second_link(self):
         chrome.get("http://suninjuly.github.io/registration2.html")
 
-        chrome.find_element_by_class_name("first").send_keys("Ivan")
-        chrome.find_element_by_class_name("second").send_keys("Petrov")
-        chrome.find_element_by_class_name("third").send_keys("email@mail.com")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your first name']").send_keys("Ivan")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your last name']").send_keys("Petrov")
+        chrome.find_element_by_xpath("//div/input[@placeholder='Input your email']").send_keys("email@mail.com")
 
         chrome.find_element_by_css_selector("button.btn").click()
 
